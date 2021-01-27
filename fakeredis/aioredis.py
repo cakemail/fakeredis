@@ -110,7 +110,7 @@ class FakeConnectionsPool(aioredis.ConnectionsPool):
                          create_connection_timeout=create_connection_timeout,
                          connection_cls=connection_cls,
                          loop=loop)
-        if server is None:
+        if server is None or isinstance(server, tuple):
             server = _server.FakeServer()
         self._server = server
 
